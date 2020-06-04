@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth:api', 'throttle:60,1'])->group(
+Route::middleware(['auth:api', 'throttle:60,1'])->group(function(){
     Route::get('/user', function (Request $request) {
         return $request->user();
-    })
-);
+    });
+});
