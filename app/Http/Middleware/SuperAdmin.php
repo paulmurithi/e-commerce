@@ -21,6 +21,9 @@ class SuperAdmin
         $user = User::all()->count();
 
         if($user!==0){
+
+            // check if the user has permissions to administer roles and permissions
+            
             if(!Auth::user()->hasPermissionTo('administer roles and permissions')){
                 abort(401);
             }
