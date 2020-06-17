@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-// request validations
+// insert role model
 use Spatie\Permission\Models\Role;
+
+// request validations
 use App\Http\Requests\storeRole;
 
 // resources
