@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 use App\user;
 
 class SuperAdmin
@@ -19,7 +20,7 @@ class SuperAdmin
         // get the number of registered users
         $user = User::all()->count();
 
-        if(!$user==0){
+        if($user!==0){
             if(!Auth::user()->hasPermissionTo('administer roles and permissions')){
                 abort(401);
             }
