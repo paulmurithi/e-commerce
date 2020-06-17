@@ -13,7 +13,7 @@ class storeRole extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
