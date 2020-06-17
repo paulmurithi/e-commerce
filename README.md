@@ -5,6 +5,7 @@ This online store project is implemented using:
 - **Sass:**For styling.
 - **Laravel-Spatie:**For roles and permissions.
 - **Vuex:**For state management.
+- **D3 js:**For data visualizations.
 
 ## Features
 - View available products under different categories.
