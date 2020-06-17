@@ -19,5 +19,5 @@ Route::middleware(['auth:api', 'throttle:60,1'])->group(function(){
         return $request->user();
     });
 });
-Route::apiResource('roles', 'RoleController');
-Route::apiResource('permissions', 'PermissionController');
+Route::apiResource('roles', 'Api\RoleController');
+Route::apiResource('permissions', 'Api\PermissionController');
