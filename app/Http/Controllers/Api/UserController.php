@@ -4,8 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
+
+use App\Http\Requests\storeUser;
+
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 use App\User;
 
@@ -27,9 +33,23 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeUser $request)
     {
-        
+        $validatedUser = $request->only(['username','email', 'password'])->validate();
+        $user = User::create($validatedUser);
+
+        $roles = $request->roles;
+
+        if(isset($roles)){
+            foreach($roles as $role){
+                $retrievedRole = Role::where(id, $role)->firstOrFail();
+                $user->assignRole($retrievedRole);
+            }
+        }
+
+        $user->fresh();
+
+        return new UserResource($user);
     }
 
     /**
@@ -40,7 +60,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return new UserResource($user);
     }
 
     /**
@@ -50,9 +71,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(storeUser $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validatedUser = $request->only(['username','email', 'password'])->validate();
+
+        $user->fill($validatedUser)->save();
+        $roles = $request->roles;
+
+        if(isset($roles)){
+            $user->syncRoles($roles);
+        }else{
+            $user->roles()->detach();
+        }
+
+        $user->fresh();
+        
+        return new UserResource($user);
     }
 
     /**
@@ -63,6 +99,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
     }
 }
