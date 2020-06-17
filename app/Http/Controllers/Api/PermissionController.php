@@ -5,7 +5,17 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PermissionController extends Controller
+// insert role model
+use Spatie\Permission\Models\Permission;
+
+// request validations
+use App\Http\Requests\storePermission;
+
+// resources
+use App\Http\Resources\PermissionResource;
+use App\Http\Resources\PermissionCollection;
+
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +24,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
+        return new PermissionCollection(Permission::paginate());
     }
 
     /**
@@ -23,9 +33,11 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storePermission $request)
     {
-        //
+        $validatedPermission = $request->validated();
+        $permission = Permission::create($validatedRole);
+        return new PermissionResource($permission);
     }
 
     /**
@@ -36,7 +48,8 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return new PermissionResource($permission);
     }
 
     /**
@@ -46,9 +59,17 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(storePermission $request, $id)
     {
-        //
+        // retrieve the permission instance from the database
+        $permission = Permission::findOrFail($id);
+
+        // retrieve validated data
+        $validatedPermission = $request->validated();
+
+        $permission->name = $validatedPermission->name;
+        $permission->save();
+        return new PermissionResource($permission);
     }
 
     /**
@@ -59,6 +80,7 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
     }
 }

@@ -62,12 +62,12 @@ class RoleController extends Controller
     public function update(storeRole $request, $id)
     {
         // retrieve the role instance from the database
-        $role = role::findOrFail($id);
+        $role = Role::findOrFail($id);
 
         // retrieve validated data
         $validatedRole = $request->validated();
 
-        $role->title = $validatedRole->name;
+        $role->name = $validatedRole->name;
         $role->save();
         return new RoleResource($role);
     }
