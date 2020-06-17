@@ -35,19 +35,19 @@ class UserController extends Controller
      */
     public function store(storeUser $request)
     {
-        $validatedUser = $request->only(['username','email', 'password'])->validate();
+        $validatedUser = $request->only(['name','email', 'password']);
         $user = User::create($validatedUser);
 
         $roles = $request->roles;
 
         if(isset($roles)){
             foreach($roles as $role){
-                $retrievedRole = Role::where(id, $role)->firstOrFail();
+                $retrievedRole = Role::where('id', $role)->firstOrFail();
                 $user->assignRole($retrievedRole);
             }
         }
 
-        $user->fresh();
+        $user->refresh();
 
         return new UserResource($user);
     }
@@ -86,7 +86,7 @@ class UserController extends Controller
             $user->roles()->detach();
         }
 
-        $user->fresh();
+        $user->refresh();
         
         return new UserResource($user);
     }
