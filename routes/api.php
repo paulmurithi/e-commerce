@@ -21,3 +21,4 @@ Route::middleware(['auth:api', 'throttle:60,1'])->group(function(){
 });
 Route::apiResource('roles', 'Api\RoleController');
 Route::apiResource('permissions', 'Api\PermissionController');
+Route::apiResource('users', 'Api\UserController');
