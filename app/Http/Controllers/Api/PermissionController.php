@@ -15,7 +15,7 @@ use App\Http\Requests\storePermission;
 use App\Http\Resources\PermissionResource;
 use App\Http\Resources\PermissionCollection;
 
-class RoleController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
