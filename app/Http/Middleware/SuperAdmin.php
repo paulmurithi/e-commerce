@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\user;
 
-class isSuperAdmin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,14 @@ class isSuperAdmin
      */
     public function handle($request, Closure $next)
     {
+        // get the number of registered users
+        $user = User::all()->count();
+
+        if(!$user==0){
+            if(!Auth::user()->hasPermissionTo('administer roles and permissions')){
+                abort(401);
+            }
+        }
         return $next($request);
     }
 }
