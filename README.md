@@ -15,3 +15,4 @@ This online store project is implemented using:
 - Analytics
 - Admin panel
 - Notifications system
+- User, role and permission management system
