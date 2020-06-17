@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// request validations
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\storeRole;
+
+// resources
+use App\Http\Resources\RoleResource;
+use App\Http\Resources\RoleCollection;
 
 class RoleController extends Controller
 {
@@ -17,7 +22,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return new RoleCollection(Role::paginate());
     }
 
     /**
@@ -28,7 +33,9 @@ class RoleController extends Controller
      */
     public function store(storeRole $request)
     {
-        //
+        $validatedRole = $request->validated();
+        $role = Role::create($validatedRole);
+        return new RoleResource($role);
     }
 
     /**
@@ -39,7 +46,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        return new RoleResource($role);
     }
 
     /**
@@ -62,6 +70,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
     }
 }
