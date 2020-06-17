@@ -36,7 +36,7 @@ class PermissionController extends Controller
     public function store(storePermission $request)
     {
         $validatedPermission = $request->validated();
-        $permission = Permission::create($validatedRole);
+        $permission = Permission::create($validatedPermission);
         return new PermissionResource($permission);
     }
 
@@ -64,10 +64,9 @@ class PermissionController extends Controller
         // retrieve the permission instance from the database
         $permission = Permission::findOrFail($id);
 
-        // retrieve validated data
-        $validatedPermission = $request->validated();
-
-        $permission->name = $validatedPermission->name;
+        // retrieve request data
+        $permission->name = $request->name;
+        
         $permission->save();
         return new PermissionResource($permission);
     }

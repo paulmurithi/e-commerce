@@ -65,9 +65,8 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
 
         // retrieve validated data
-        $validatedRole = $request->validated();
-
-        $role->name = $validatedRole->name;
+        $role->name = $request->name;
+        
         $role->save();
         return new RoleResource($role);
     }
