@@ -12,3 +12,6 @@ This online store project is implemented using:
 - Online checkout system using **M-pesa**.
 - Order tracking system.
 - Save a product for later viewing.
+- Analytics
+- Admin panel
+- Notifications system
