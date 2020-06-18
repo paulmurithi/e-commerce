@@ -15,6 +15,8 @@ use Spatie\Permission\Models\Permission;
 
 use App\User;
 
+use Hash;
+
 class UserController extends Controller
 {
     /**
@@ -35,7 +37,9 @@ class UserController extends Controller
      */
     public function store(storeUser $request)
     {
-        $validatedUser = $request->only(['name','email', 'password']);
+        $validatedUser = $request->only(['name','email']);
+        $validatedUser['password'] = Hash::make($request->password);
+
         $user = User::create($validatedUser);
 
         $roles = $request->roles;

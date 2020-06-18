@@ -26,7 +26,7 @@ class storeUser extends FormRequest
         return [
             'name'=>'required|string',
             'email'=>'email|unique:users|required',
-            'password'=>'required|string|confirmed',
+            'password'=>'required|string|min:6|confirmed',
             'created_at'=>'date|nullable',
             'updated_at'=>'date|nullable'
         ];
