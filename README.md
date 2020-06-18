@@ -4,6 +4,7 @@ This online store project is implemented using:
 - **VueJS:**For for front-end.
 - **Sass:**For styling.
 - **Spatie Laravel-permission:**For roles and permissions.
+- **Passport:**Authentication.
 - **Vuex:**For state management.
 - **D3 js:**For data visualizations.
 
