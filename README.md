@@ -3,7 +3,7 @@ This online store project is implemented using:
 - **Laravel:**To create the restful Api backend.
 - **VueJS:**For for front-end.
 - **Sass:**For styling.
-- **Laravel-Spatie:**For roles and permissions.
+- **Spatie Laravel-permission:**For roles and permissions.
 - **Vuex:**For state management.
 - **D3 js:**For data visualizations.
 
@@ -16,4 +16,6 @@ This online store project is implemented using:
 - Analytics
 - Admin panel
 - Notifications system
-- User, role and permission management system
+- User management system
+- role management system
+- permission management system
