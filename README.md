@@ -3,8 +3,8 @@ This online store project is implemented using:
 - **Laravel:**To create the restful Api backend.
 - **VueJS:**For for front-end.
 - **Sass:**For styling.
-- **Spatie Laravel-permission:**For roles and permissions.
-- **Passport:**Authentication.
+- **Spatie Laravel-permission:**For authorization.
+- **Passport:**To implement Oauth2 Authentication.
 - **Vuex:**For state management.
 - **D3JS:**For data visualizations.
 
