@@ -15,6 +15,8 @@ class CreateSavesTable extends Migration
     {
         Schema::create('saves', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unique()->constrained();
+            $table->foreignId('product_id')->unique()->constrained();
             $table->timestamps();
         });
     }
