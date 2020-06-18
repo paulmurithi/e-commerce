@@ -6,7 +6,7 @@ This online store project is implemented using:
 - **Spatie Laravel-permission:**For roles and permissions.
 - **Passport:**Authentication.
 - **Vuex:**For state management.
-- **D3 js:**For data visualizations.
+- **D3JS:**For data visualizations.
 
 ## Features
 - View available products under different categories.
