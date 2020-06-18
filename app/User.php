@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
+// use Hash;
+
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -39,7 +41,7 @@ class User extends Authenticatable
     ];
 
     // encrypt all password attributes
-    public function setPasswordAttribute($password){
-        $this->attributes['password'] = bcrypt($password);
-    }
+    // public function setPasswordAttribute($password){
+    //     $this->attributes['password'] = Hash::make($password);
+    // }
 }
