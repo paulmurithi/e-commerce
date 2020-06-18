@@ -35,8 +35,20 @@ class RoleController extends Controller
      */
     public function store(storeRole $request)
     {
-        $validatedRole = $request->validated();
+        $validatedRole = $request->only('name');
         $role = Role::create($validatedRole);
+
+        $permissions = $request->permissions;
+
+        if(isset($permissions)){
+            foreach($permissions as $permission){
+                $retrievedPermission = Permission::where('id', $permission)->firstOrFail();
+                $role->givePermissionTo($retrievedPermission);
+            }
+        }
+
+        $role->refresh();
+        
         return new RoleResource($role);
     }
 
