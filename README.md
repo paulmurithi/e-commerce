@@ -20,3 +20,33 @@ This online store project is implemented using:
 - User management system
 - role management system
 - permission management system
+
+## Getting started
+1. First clone the repository by running the command below.
+
+```bash
+git clone repo
+```
+2. install laravel dependancies running
+
+```bash
+composer install
+```
+3. Run migrations
+```bash
+php artisan migrate
+```
+4. Install node dependancies.
+```bash
+npm install
+```
+5. Compile vue components
+```bash
+npm run dev
+```
+6. Run the local development server and test in the browser
+```bash
+php artisan serve
+```
+
+*If this repo was usful please star and even folk! happy coding*
