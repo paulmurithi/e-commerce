@@ -25,7 +25,7 @@ This online store project is implemented using:
 1. First clone the repository by running the command below.
 
 ```bash
-git clone repo
+git clone https://github.com/paulmurithi/e-commerce.git
 ```
 2. install laravel dependancies running
 
