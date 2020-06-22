@@ -24,7 +24,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return new RoleCollection(Role::paginate());
+        return new RoleCollection(Role::all());
     }
 
     /**
@@ -78,8 +78,18 @@ class RoleController extends Controller
 
         // retrieve validated data
         $role->name = $request->name;
-        
+
         $role->save();
+
+        $permissions = $request->permissions;
+
+        if(isset($permissions)){
+            foreach($permissions as $permission){
+                $retrievedPermission = Permission::where('id', $permission)->firstOrFail();
+                $role->givePermissionTo($retrievedPermission);
+            }
+        }
+        
         return new RoleResource($role);
     }
 
