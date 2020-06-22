@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 // insert role model
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 // request validations
 use App\Http\Requests\storeRole;
