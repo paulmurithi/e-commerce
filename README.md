@@ -1,13 +1,13 @@
 # E-COMMERCE SITE.
 This online store project is implemented using:
 - **Laravel:** To create the restful Api backend.
-- **VueJS:** For for front-end.
+- **Vue JS:** For for front-end.
 - **Sass:** For styling.
 - **Spatie Laravel-permission:** For authorization.
 - **Passport:** To implement Oauth2 Authentication.
 - **Vuex:** For state management.
 - **Vue-router:** For routing.
-- **D3JS:** For data visualizations.
+- **D3 JS:** For data visualizations.
 
 ## Features
 - View available products under different categories.
