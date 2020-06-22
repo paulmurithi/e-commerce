@@ -24,7 +24,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return new PermissionCollection(Permission::paginate());
+        return new PermissionCollection(Permission::all());
     }
 
     /**
