@@ -84,19 +84,7 @@ class RoleController extends Controller
 
         $permissions = $request->permissions;
 
-        if(isset($permissions)){
-            foreach($permissions as $permission){
-                $retrievedPermission = Permission::where('id', $permission)->firstOrFail();
-                $role->givePermissionTo($retrievedPermission);
-            }
-        } else{
-            $permissions = Permission::where('role', $role);
-
-            foreach($permissions as $permission){
-                $role->revokePermissionTo($permission);
-            }
-            
-        }
+        $role->syncPermissions($permissions);
         
         return new RoleResource($role);
     }
