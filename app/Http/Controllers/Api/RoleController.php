@@ -84,6 +84,7 @@ class RoleController extends Controller
 
         $permissions = $request->permissions;
 
+        // update permissions
         $role->syncPermissions($permissions);
         
         return new RoleResource($role);
