@@ -8,7 +8,7 @@ import Permissions from './modules/Permissions';
 
 Vue.use(Vuex);
 
-export default Vuex.Store({
+export default new Vuex.Store({
     state:{},
     getters:{},
     mutations:{},
