@@ -12,11 +12,11 @@ const actions = {
         commit('SET_ROLES', response.data);
     },
     async addRole({commit}, role){
-        const response = axios.get('api/roles', role);
+        const response = axios.post('api/roles', role);
         commit('ADD_ROLE', response.data);
     },
     async editRole({commit}, updatedRole){
-        const response = axios.get(`api/roles/${updatedRole.id}`, updatedRole);
+        const response = axios.put(`api/roles/${updatedRole.id}`, updatedRole);
         commit('EDIT_ROLE', response.data);
     },
     async deleteRole({commit}, id){
@@ -35,7 +35,7 @@ const mutations = {
             state.roles.splice(index, 1, updatedRole);
         }
     },
-    
+
     DELETE_ROLE:(state, id)=>state.roles.filter(role=>role.id==id)
 };
 
