@@ -16,7 +16,7 @@ export default {
     computed:mapGetters(['allRoles']),
 
     methods: {
-        ...mapActions(['fetchRoles'])
+        ...mapActions(['fetchRoles', 'deleteRole'])
     },
     
     created() {
