@@ -4,9 +4,7 @@ const state = {
     users:[],
 };
 const getters = {
-    allUsers:(state)=>{
-        return state.users
-    },
+    allUsers:(state)=>state.users,
 };
 const actions = {
     async fetchUsers({commit}){
