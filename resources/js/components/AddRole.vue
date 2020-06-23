@@ -5,7 +5,7 @@
 </template>
 <script>
 
-import {mapActions} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
     name:'AddRole',
@@ -18,9 +18,11 @@ export default {
             name:''
         }
     },
-
+    computed: {
+        ...mapGetter(['allPermissions'])
+    },
     methods: {
-        ...mapActions(['addRole'])
+        ...mapActions(['addRole', 'FetchPermissions'])
     }
 }
 </script>
