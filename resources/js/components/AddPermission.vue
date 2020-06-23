@@ -13,6 +13,12 @@ export default {
 
     },
 
+    data() {
+        return {
+            name:''
+        }
+    },
+
     methods: {
         ...mapActions(['addPermission'])
     }

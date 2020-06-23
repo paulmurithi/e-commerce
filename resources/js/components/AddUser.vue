@@ -13,6 +13,15 @@ export default {
 
     },
 
+    data() {
+        return {
+            name:'',
+            email:'',
+            password:'',
+            password_confirm:''
+        }
+    },
+
     methods: {
         ...mapActions(['addUser'])
     }
