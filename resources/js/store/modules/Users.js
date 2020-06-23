@@ -35,6 +35,7 @@ const mutations = {
             state.users.splice(index, 1, updatedUser);
         }
     },
+    
     DELETE_USER:(state, id)=>state.users.filter(user=>user.id==id)
 };
 
