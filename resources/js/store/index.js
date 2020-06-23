@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+// import modules
+import Users from './modules/Users';
+import Roles from './modules/Roles';
+import Permissions from './modules/Permissions';
+
 Vue.use(Vuex);
 
 export default Vuex.Store({
@@ -8,5 +13,9 @@ export default Vuex.Store({
     getters:{},
     mutations:{},
     actions:{},
-    modules:{}
+    modules:{
+        Users,
+        Roles,
+        Permissions
+    }
 });
