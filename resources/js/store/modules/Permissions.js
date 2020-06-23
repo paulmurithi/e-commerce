@@ -5,7 +5,7 @@ const getters = {};
 const actions = {};
 const mutations = {};
 
-export {
+export default{
     state,
     getters,
     mutations,
