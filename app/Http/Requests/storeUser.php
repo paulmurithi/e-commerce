@@ -24,11 +24,12 @@ class storeUser extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string',
-            'email'=>'email|unique:users|required',
-            'password'=>'required|string|min:6|confirmed',
-            'created_at'=>'date|nullable',
-            'updated_at'=>'date|nullable'
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            "roles"=>['nullable','array'],
+            'created_at'=>['date','nullable'],
+            'updated_at'=>['date','nullable']
         ];
     }
 }

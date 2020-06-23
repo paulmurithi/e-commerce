@@ -15,7 +15,7 @@ use Spatie\Permission\Models\Permission;
 
 use App\User;
 
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,21 +37,15 @@ class UserController extends Controller
      */
     public function store(storeUser $request)
     {
-        $validatedUser = $request->only(['name','email']);
-        $validatedUser['password'] = Hash::make($request->password);
-
-        $user = User::create($validatedUser);
+        $user = User::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password)
+        ]);
 
         $roles = $request->roles;
 
-        if(isset($roles)){
-            foreach($roles as $role){
-                $retrievedRole = Role::where('id', $role)->firstOrFail();
-                $user->assignRole($retrievedRole);
-            }
-        }
-
-        $user->refresh();
+        $user->syncRoles($role);
 
         return new UserResource($user);
     }
@@ -84,11 +78,13 @@ class UserController extends Controller
         $user->fill($validatedUser)->save();
         $roles = $request->roles;
 
-        if(isset($roles)){
-            $user->syncRoles($roles);
-        }else{
-            $user->roles()->detach();
-        }
+        $user->syncRoles($roles);
+
+        // if(isset($roles)){
+        //     $user->syncRoles($roles);
+        // }else{
+        //     $user->roles()->detach();
+        // }
 
         $user->refresh();
         
