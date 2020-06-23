@@ -5,7 +5,7 @@
 </template>
 <script>
 
-import {mapActions} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
     name:'AddUser',
@@ -17,13 +17,18 @@ export default {
         return {
             name:'',
             email:'',
+            roles:[],
             password:'',
             password_confirm:''
         }
     },
 
+    computed: {
+        ...papGetters(['allRoles'])
+    },
+
     methods: {
-        ...mapActions(['addUser'])
+        ...mapActions(['fetchRoles', 'addUser'])
     }
 }
 </script>
