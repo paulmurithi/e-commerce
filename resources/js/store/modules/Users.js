@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-const state = {};
-const getters = {};
+const state = {
+    users:[],
+};
+const getters = {
+    allUsers(state){
+        return state.users
+    },
+};
 const actions = {};
 const mutations = {};
 
