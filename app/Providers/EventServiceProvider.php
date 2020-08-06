@@ -7,6 +7,13 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Events\OrderPlaced;
+use App\Listeners\SendOrderPacedNotification;
+use App\Events\OrderProcessed;
+use App\Listeners\SendOrderProcessedNotification;
+use App\Events\OrderShipped;
+use App\Listeners\SendOrderShippedNotification;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -17,6 +24,15 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        OrderPlaced::class => [
+            SendOrderPacedNotification::class,
+        ],
+        OrderProcessed::class => [
+            SendOrderProcessedNotification::class,
+        ],
+        OrderShipped::class => [
+            SendOrderShippedNotification::class,
         ],
     ];
 
