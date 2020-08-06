@@ -10,6 +10,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+use App\Order;
+
 class OrderPlaced
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -19,9 +21,11 @@ class OrderPlaced
      *
      * @return void
      */
-    public function __construct()
+    public $order;
+
+    public function __construct(Order $order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
